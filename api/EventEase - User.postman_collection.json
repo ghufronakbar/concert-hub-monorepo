@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "4701247f-68af-4866-98aa-d018188fd6f7",
+		"name": "EventEase - User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25112448"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullname",
+									"value": "Lans The Prodigy",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "lanstheprodigy@gmail.com2",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0851560313852",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "confirmation_password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo0LCJpYXQiOjE3MTY2NTM4NTMsImV4cCI6MTcxNjY1OTYxM30.mfyPjnyOkWfYsvLzWL6_vDtip43wkU0XWg_0X6Fulp8"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{base_url}}/api/user/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo0LCJpYXQiOjE3MTY2NTM2ODIsImV4cCI6MTcxNjY1OTQ0Mn0.0hNoPcMk2zqNYJ6d0cMkpiy6K1ZBocvWpzgsXlruGxw"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullname",
+									"value": "Lans The Prodigy",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "lanstheprodigy@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "085156031385",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/profile/edit"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo0LCJpYXQiOjE3MTY2NTQ0NjYsImV4cCI6MTcxNjY2MDIyNn0.ShAkOhhHNkrV3UhFGtini8AJxEWOYVI1CVmEMV4i3pg"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "old_password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/profile/password"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "All Event",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo0LCJpYXQiOjE3MTY2Njc1MDEsImV4cCI6MTcxNjY3MzI2MX0.pMeuxXVcFTkRjbAnIw0v_ath8M50DgQnE9TQxD5YhcU"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{base_url}}/api/user/events"
+					},
+					"response": []
+				},
+				{
+					"name": "Recommended",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo0LCJpYXQiOjE3MTY2Njc1MDEsImV4cCI6MTcxNjY3MzI2MX0.pMeuxXVcFTkRjbAnIw0v_ath8M50DgQnE9TQxD5YhcU"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/events/recommended?limit=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"events",
+								"recommended"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Event By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo0LCJpYXQiOjE3MTY2Njc1MDEsImV4cCI6MTcxNjY3MzI2MX0.pMeuxXVcFTkRjbAnIw0v_ath8M50DgQnE9TQxD5YhcU"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{base_url}}/api/user/event/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "History",
+			"item": [
+				{
+					"name": "All History",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxLCJpYXQiOjE3MTY2NzAwNzAsImV4cCI6MTcxNjY3NTgzMH0.AuuS_hyTeQrjpJbKf-h5hBqCbIzmIaU-aqH3NaBaH3A"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/histories?paid=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"histories"
+							],
+							"query": [
+								{
+									"key": "paid",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxLCJpYXQiOjE3MTY2NzAwNzAsImV4cCI6MTcxNjY3NTgzMH0.AuuS_hyTeQrjpJbKf-h5hBqCbIzmIaU-aqH3NaBaH3A"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{base_url}}/api/user/history/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Make Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxLCJpYXQiOjE3MTY3MTM2MjIsImV4cCI6MTcxNjcxOTM4Mn0.OLsQlJCWh65E2y-KRi2SSzV-lPoZi6U2_OIasxGGGXY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_ticket",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "18",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/order"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxLCJpYXQiOjE3MTY3MTM2MjIsImV4cCI6MTcxNjcxOTM4Mn0.OLsQlJCWh65E2y-KRi2SSzV-lPoZi6U2_OIasxGGGXY"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_ticket",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/order/cancel/30"
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxLCJpYXQiOjE3MTY3MTM2MjIsImV4cCI6MTcxNjcxOTM4Mn0.OLsQlJCWh65E2y-KRi2SSzV-lPoZi6U2_OIasxGGGXY"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_ticket",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/order/confirm/32"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo0LCJpYXQiOjE3MTY2NTM4NTMsImV4cCI6MTcxNjY1OTYxM30.mfyPjnyOkWfYsvLzWL6_vDtip43wkU0XWg_0X6Fulp8",
+			"type": "string"
+		}
+	]
+}
