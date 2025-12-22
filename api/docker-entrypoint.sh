@@ -26,7 +26,8 @@ for i in $(seq 1 60); do
 done
 
 # Kalau tidak ada command (kadang terjadi), set default
-if [ "$#" -eq 0 ]; then
+# Kalau tidak ada command, atau command cuma "node", paksa jalankan entrypoint API
+if [ "$#" -eq 0 ] || { [ "$#" -eq 1 ] && [ "$1" = "node" ]; }; then
   set -- node bin/www.js
 fi
 
