@@ -1,0 +1,76 @@
+# docker-compose.http.yml
+version: "2.4"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: concerthub-mysql
+    command: [ "--default-authentication-plugin=mysql_native_password", "--innodb-buffer-pool-size=256M", "--max_connections=200" ]
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./api/restore.sql:/docker-entrypoint-initdb.d/01-restore.sql:ro
+    networks:
+      - internal
+    restart: unless-stopped
+    mem_limit: 700m
+    cpus: 0.7
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: concerthub-api
+    environment:
+      PORT: ${PORT}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+      MIDTRANS_SERVER_KEY: ${MIDTRANS_SERVER_KEY}
+      MIDTRANS_IS_PRODUCTION: ${MIDTRANS_IS_PRODUCTION}
+
+      # local/HTTP simulation
+      BASE_URL: "http://api-ch.lans.my.id"
+    depends_on:
+      - mysql
+    volumes:
+      # persist images di host
+      - ./api/images:/usr/src/app/images
+      - ./api/images_seed:/usr/src/app/images_seed:ro
+    networks:
+      - internal
+      - web
+    restart: unless-stopped
+    mem_limit: 900m
+    cpus: 1.0
+
+  nginx:
+    image: nginx:alpine
+    container_name: concerthub-nginx
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/http.conf:/etc/nginx/conf.d/default.conf:ro
+      # share images (read-only) untuk di-serve nginx
+      - ./api/images:/var/www/images:ro
+    networks:
+      - web
+    restart: unless-stopped
+    mem_limit: 200m
+    cpus: 0.3
+
+volumes:
+  mysql_data:
+
+
+networks:
+  internal:
+  web:
