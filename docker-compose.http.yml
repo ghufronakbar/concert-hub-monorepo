@@ -41,7 +41,8 @@ services:
       - mysql
     volumes:
       # persist images di host
-      - ./api/images:/usr/src/app/images
+      # - ./api/images:/usr/src/app/images
+      - /srv/concerthub/images:/usr/src/app/images
       - ./api/images_seed:/usr/src/app/images_seed:ro
     networks:
       - internal
