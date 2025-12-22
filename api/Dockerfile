@@ -9,7 +9,7 @@ ENV NODE_ENV=production
 ENV NODE_OPTIONS=--max-old-space-size=512
 
 # install su-exec untuk drop privilege
-RUN apk add --no-cache su-exec
+RUN apk add --no-cache su-exec netcat-openbsd
 
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
