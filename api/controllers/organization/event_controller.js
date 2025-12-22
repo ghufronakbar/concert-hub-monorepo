@@ -259,7 +259,7 @@ exports.eventAdd = async (req, res) => {
                 if (site_plan_image) fs.unlinkSync(`images/site-plan/${site_plan_image}`);
                 return res.status(400).json({ status: 400, message: "Field can't be blank!" });
             } else {
-                const qEventAdd = `INSERT INTO events(id_organization,event_name,description,location,event_image,site_plan_image,type,status,event_start,event_end,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`;
+                const qEventAdd = `INSERT INTO events(id_organization,event_name,description,location,event_image,site_plan_image,type,status,event_start,event_end,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
                 const vEventAdd = [id_organization, event_name, description, location, event_image, site_plan_image, type, status, new Date(event_start), new Date(event_end), datetimenow];
                 connection.query(qEventAdd, vEventAdd, function (error) {
                     if (error) {
@@ -302,8 +302,11 @@ exports.eventEdit = async (req, res) => {
                         console.log(error);
                         return res.status(500).json({ status: 500, message: "Internal Server Error" });
                     }
-                    const oldEventImage = rows[0].event_image;
-                    const oldSitePlanImage = rows[0].site_plan_image;
+                    if (rows.length === 0) {
+                        return res.status(404).json({ message: "Event not found" });
+                    }
+                    const oldEventImage = rows?.[0]?.event_image;
+                    const oldSitePlanImage = rows?.[0]?.site_plan_image;
 
                     let updateQuery = `UPDATE events SET event_name = ?, description = ?, location = ?, type = ?, event_start = ?, event_end = ?`;
                     let updateValues = [event_name, description, location, type, new Date(event_start), new Date(event_end)];

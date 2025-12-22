@@ -8,7 +8,8 @@ class BaseUrl {
         private val context = MainActivity.applicationContext()
         val xmlConfigParser = XmlConfigParser(context)
         var IpConfig = xmlConfigParser.getIpConfig()
-        var URL: String = "http://$IpConfig:2001"
 
+        var URL: String = "https://$IpConfig"
+//        var URL: String = "http://$IpConfig:2001"
     }
 }
